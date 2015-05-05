@@ -1,0 +1,27 @@
+<%= link_to("Sign Out", destroy_user_session_path, method: :delete) %>
+<h1> Change your information here  </h1>
+<%= form_for @user, url: {controller: "main", action: "update"} do |u| %>
+
+<% if @name  %>
+<%= u.text_field :name, placeholder: @name %>
+<% else %>
+<%= u.text_field :name, placeholder: "name" %>
+<% end %>
+
+<% if @location  %>
+<%= u.text_field :location, placeholder: @location %>
+<% else %>
+<%= u.text_field :location, placeholder: "location" %>
+<% end %>
+
+<% if @phone  %>
+<%= u.text_field :phone, placeholder: @phone %>
+<% else %>
+<%= u.text_field :phone, placeholder: "phone number" %>
+<% end %>
+
+<%= u.submit "Submit" %>
+
+<% end %>
+
+<h1> Make an order here  </h1>
