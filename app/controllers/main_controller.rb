@@ -5,6 +5,8 @@ before_action :authenticate_user!
     @name = @user.name
     @location = @user.location
     @phone = @user.phone
+    @order = Order.new
+    @orders = Order.where(user_id: @user.id)
   end
 
   def update
@@ -13,10 +15,14 @@ before_action :authenticate_user!
     redirect_to :back
   end
 
+  def message
+    
+  end
+
 private 
 
 def user_params
-  params.require(:user).permit(:name, :location, :phone )
+  params.require(:user).permit( :name, :location, :phone )
 end
 
 end

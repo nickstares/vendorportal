@@ -25,3 +25,27 @@
 <% end %>
 
 <h1> Make an order here  </h1>
+<%= form_for @order, url: {controller: "orders", action: "create"} do |u| %>
+<%= u.select(:quantity, options_for_select([[25, 25],[50, 50], [75, 75],[100, 100],[125, 125],[150, 150]], 0)) %>
+<%= u.submit "Submit" %>
+<% end %>
+
+<p>
+<h3> Your Orders: </h3>
+<%  @orders.each do |o|  %>
+<%= link_to "Cancel Order", order_path(o), method: :delete %>
+
+<h4>Quantity:</h4>
+<%= o.quantity %>
+
+<h4>Created At:</h4>
+<%= o.created_at %>
+</p>
+<% end %>
+<h1> Leave Us A Message  </h1>
+
+<%= form_tag('/message') do |f|%>
+<input type="text"></input>
+<input type="submit"></input>
+<% end %>
+
